@@ -27,11 +27,9 @@ peer.on('connection', function(c) {
     })
 })
 window._mousedown = (id) => {
-    callbacks[id][0] = true;
-    callbacks[id][3].currentTime = 0;
-    callbacks[id][3].playbackRate = 1;
-    if (callbacks[id][3].paused) callbacks[id][3].play();
+    callbacks[id].state = true;
+    window._play(id);
 }
 window._mouseup = (id) => {
-    callbacks[id][0] = false;
+    callbacks[id].state = false;
 }
